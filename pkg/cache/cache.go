@@ -1,3 +1,4 @@
+// Package cache provides a thread-safe in-memory cache with TTL support.
 package cache
 
 import (
@@ -5,11 +6,13 @@ import (
 	"time"
 )
 
+// CacheItem represents a cached value with optional expiration.
 type CacheItem struct {
 	Value     any
 	ExpiresAt *time.Time
 }
 
+// Cache is a thread-safe in-memory cache with TTL support.
 type Cache struct {
 	mu              sync.RWMutex
 	items           map[string]*CacheItem
